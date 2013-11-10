@@ -22,7 +22,7 @@
 
 @interface WECodeScannerView : UIView
 
-@property (nonatomic, weak) id <WECodeScannerViewDelegate> delegate;
+@property (unsafe_unretained) id <WECodeScannerViewDelegate> delegate;
 @property (nonatomic, assign) NSTimeInterval quietPeriodAfterMatch;
 
 - (void)setMetadataObjectTypes:(NSArray *)metaDataObjectTypes;
