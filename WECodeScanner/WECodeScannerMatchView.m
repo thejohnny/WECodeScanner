@@ -172,8 +172,7 @@ static NSString * const flashAnimationID = @"animateFlash";
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (!_set) {
-        // TODO: Make an initializer to enable/disable scanning animation
-//        [self startScanningAnimating];
+        [self startScanningAnimating];
     }
 }
 
