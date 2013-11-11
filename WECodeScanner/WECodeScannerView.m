@@ -34,7 +34,7 @@
         self.captureSession = [[AVCaptureSession alloc] init];
         [self.captureSession setSessionPreset:AVCaptureSessionPreset640x480];
         
-        AVCaptureDevice *videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        AVCaptureDevice *videoCaptureDevice = [self frontFacingCameraIfAvailable];
         NSError *error = nil;
         
         if ([videoCaptureDevice lockForConfiguration:&error]) {
@@ -191,6 +191,29 @@
             }
         }
     }
+}
+
+#pragma mark AVCaptureDevice selection
+-(AVCaptureDevice *)frontFacingCameraIfAvailable
+{
+    NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *captureDevice = nil;
+    for (AVCaptureDevice *device in videoDevices)
+    {
+        if (device.position == AVCaptureDevicePositionFront)
+        {
+            captureDevice = device;
+            break;
+        }
+    }
+    
+    //  couldn't find one on the front, so just get the default video device.
+    if ( ! captureDevice)
+    {
+        captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    }
+    
+    return captureDevice;
 }
 
 @end
