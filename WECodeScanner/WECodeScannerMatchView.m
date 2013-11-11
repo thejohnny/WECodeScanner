@@ -99,14 +99,16 @@ static NSString * const flashAnimationID = @"animateFlash";
         [_shapeLayer removeAllAnimations];
         
         CGFloat marginX = 5.0f;
-        CGFloat marginY = 25.0f;
+//        CGFloat marginY = 25.0f;
+        CGFloat marginY = 5.0f; // Disables easing animation but shows path
         CGPathRef fromPath = [self createPathWithTopLeftPoint:CGPointMake(marginX, marginY)
                                                 topRightPoint:CGPointMake(self.bounds.size.width - marginX, marginY)
                                               bottomLeftPoint:CGPointMake(marginX, self.bounds.size.height - marginY)
                                              bottomRightPoint:CGPointMake(self.bounds.size.width - marginX, self.bounds.size.height - marginY)];
         
         
-        marginX = 25.0f;
+//        marginX = 25.0f;
+        marginX = 5.0f; // Disables easing animation but shows path
         marginY = 5.0f;
         CGPathRef toPath = [self createPathWithTopLeftPoint:CGPointMake(marginX, marginY)
                                               topRightPoint:CGPointMake(self.bounds.size.width - marginX, marginY)
