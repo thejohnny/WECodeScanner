@@ -97,15 +97,17 @@
     self.previewLayer.frame = self.bounds;
     self.matchView.frame = self.bounds;
     
-    AVCaptureConnection *previewLayerConnection = self.previewLayer.connection;
-    if ([previewLayerConnection isVideoOrientationSupported])
-        [previewLayerConnection setVideoOrientation:(AVCaptureVideoOrientation)[[UIApplication sharedApplication] statusBarOrientation]];
-
     /*
      //Doesn't work for some reason: CGAffineTransform error
     CGRect rect = [self.previewLayer metadataOutputRectOfInterestForRect:self.previewLayer.bounds];
     self.metadataOutput.rectOfInterest = rect;
     */ 
+}
+
+- (void) rotatePreviewLayer {
+    AVCaptureConnection *previewLayerConnection = self.previewLayer.connection;
+    if ([previewLayerConnection isVideoOrientationSupported])
+        [previewLayerConnection setVideoOrientation:(AVCaptureVideoOrientation)[[UIApplication sharedApplication] statusBarOrientation]];
 }
 
 - (void)start {
