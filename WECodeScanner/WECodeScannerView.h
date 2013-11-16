@@ -28,6 +28,6 @@
 - (void)setMetadataObjectTypes:(NSArray *)metaDataObjectTypes;
 - (void)start;
 - (void)stop;
-- (void)rotatePreviewLayer;
+- (void)rotatePreviewLayerToOrientation:(UIInterfaceOrientation)toOrientation;
 
 @end

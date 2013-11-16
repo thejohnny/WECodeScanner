@@ -104,10 +104,10 @@
     */ 
 }
 
-- (void) rotatePreviewLayer {
+- (void) rotatePreviewLayerToOrientation:(UIInterfaceOrientation)toOrientation {
     AVCaptureConnection *previewLayerConnection = self.previewLayer.connection;
     if ([previewLayerConnection isVideoOrientationSupported])
-        [previewLayerConnection setVideoOrientation:(AVCaptureVideoOrientation)[[UIApplication sharedApplication] statusBarOrientation]];
+        [previewLayerConnection setVideoOrientation:(AVCaptureVideoOrientation)toOrientation];
 }
 
 - (void)start {
