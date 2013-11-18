@@ -63,7 +63,7 @@ static NSString * const flashAnimationID = @"animateFlash";
     }
 }
 
-- (CGPathRef)createPathWithTopLeftPoint:(CGPoint)topLeftPoint topRightPoint:(CGPoint)topRightPoint bottomLeftPoint:(CGPoint)bottomLeftPoint bottomRightPoint:(CGPoint)bottomRightPoint {
+- (CGPathRef)newPathWithTopLeftPoint:(CGPoint)topLeftPoint topRightPoint:(CGPoint)topRightPoint bottomLeftPoint:(CGPoint)bottomLeftPoint bottomRightPoint:(CGPoint)bottomRightPoint {
     
     [self extraPolatePoint:&topLeftPoint andPoint:&bottomLeftPoint];
     [self extraPolatePoint:&topRightPoint andPoint:&bottomRightPoint];
@@ -101,7 +101,7 @@ static NSString * const flashAnimationID = @"animateFlash";
         CGFloat marginX = 5.0f;
 //        CGFloat marginY = 25.0f;
         CGFloat marginY = 5.0f; // Disables easing animation but shows path
-        CGPathRef fromPath = [self createPathWithTopLeftPoint:CGPointMake(marginX, marginY)
+        CGPathRef fromPath = [self newPathWithTopLeftPoint:CGPointMake(marginX, marginY)
                                                 topRightPoint:CGPointMake(self.bounds.size.width - marginX, marginY)
                                               bottomLeftPoint:CGPointMake(marginX, self.bounds.size.height - marginY)
                                              bottomRightPoint:CGPointMake(self.bounds.size.width - marginX, self.bounds.size.height - marginY)];
@@ -110,7 +110,7 @@ static NSString * const flashAnimationID = @"animateFlash";
 //        marginX = 25.0f;
         marginX = 5.0f; // Disables easing animation but shows path
         marginY = 5.0f;
-        CGPathRef toPath = [self createPathWithTopLeftPoint:CGPointMake(marginX, marginY)
+        CGPathRef toPath = [self newPathWithTopLeftPoint:CGPointMake(marginX, marginY)
                                               topRightPoint:CGPointMake(self.bounds.size.width - marginX, marginY)
                                             bottomLeftPoint:CGPointMake(marginX, self.bounds.size.height - marginY)
                                            bottomRightPoint:CGPointMake(self.bounds.size.width - marginX, self.bounds.size.height - marginY)];
@@ -124,8 +124,8 @@ static NSString * const flashAnimationID = @"animateFlash";
         animation.toValue = (__bridge id)toPath;
         [_shapeLayer addAnimation:animation forKey:scanningAnimationID];
         
-        CFRelease(fromPath);
-        CFRelease(toPath);
+        CGPathRelease(fromPath);
+        CGPathRelease(toPath);
     }
 }
 
@@ -135,7 +135,7 @@ static NSString * const flashAnimationID = @"animateFlash";
         
         CAShapeLayer *currentLayerState = [_shapeLayer presentationLayer];
         
-        CGPathRef toPath = [self createPathWithTopLeftPoint:topLeftPoint
+        CGPathRef toPath = [self newPathWithTopLeftPoint:topLeftPoint
                                               topRightPoint:topRightPoint
                                             bottomLeftPoint:bottomLeftPoint
                                            bottomRightPoint:bottomRightPoint];
