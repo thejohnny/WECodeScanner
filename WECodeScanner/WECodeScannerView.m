@@ -185,7 +185,6 @@
                     CGRectContainsPoint(self.matchView.bounds, bottomRightPoint))
                 {
                     [self stop];
-                    _timer = [NSTimer scheduledTimerWithTimeInterval:self.quietPeriodAfterMatch target:self selector:@selector(start) userInfo:nil repeats:NO];
                     self.lastDetectionDate = [NSDate date];
                     
                     [self.matchView setFoundMatchWithTopLeftPoint:topLeftPoint
